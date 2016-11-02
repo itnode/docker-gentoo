@@ -9,15 +9,12 @@ echo 'EMERGE_DEFAULT_OPTS="--autounmask-write"' >> /etc/portage/make.conf && \
 echo 'MAKEOPTS="-j9"'       >> /etc/portage/make.conf && \
 echo 'CONFIG_PROTECT="-*"'  >> /etc/portage/make.conf 
 
-RUN emerge-webrsync && emerge portage && emerge -uD world && rm -rf /usr/portage 
+RUN emerge-webrsync && \
+emerge portage && \
+emerge -uD world && \
+rm -rf /usr/portage 
 
 #RUN emerge daemontools flaggie dev-vcs/git vim 
-
-RUN mkdir /root/.ssh/
-ADD ../../id_rsa /root/.ssh/id_rsa
-RUN touch /root/.ssh/known_hosts
-
-RUN chown 0600 /root/.ssh/id_rsa
 
 ENV PERLBREW_ROOT=/opt/perl5
 
@@ -34,9 +31,6 @@ ENV PERLBREW_MANPATH=/opt/perl5/perls/perl-5.24.0/man
 ENV PERLBREW_PATH=/opt/perl5/bin:/opt/perl5/perls/perl-5.24.0/bin
 ENV PERLBREW_SKIP_INIT=1
 
-RUN ssh-keyscan gitlab.itnode.de >> /root/.ssh/known_hosts
-
-CMD /usr/bin/svscan /service
 
 
 
