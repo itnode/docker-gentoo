@@ -1,0 +1,3 @@
+#!/bin/bash
+exec /usr/sbin/rsyslogd -c3 -f /etc/rsyslog.conf >/dev/null 2>&1
+

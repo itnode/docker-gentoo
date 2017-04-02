@@ -1,0 +1,15 @@
+image: docker:latest
+
+services:
+ - docker:dind
+
+Build:
+  script:
+    - /bin/sh extern/docker/app/make_docker.sh 
+  only:
+    - /^release.*$/
+
+Test:
+  script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_HOSTNAME
+    - /bin/sh extern/docker/app/make_docker_test.sh 

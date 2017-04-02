@@ -27,8 +27,8 @@ if [ ! -e /etc/ssl/mailcerts/.ssl-generated ]; then
 fi
 
 if [ ! -e /etc/opendkim/keys/.default-generated ]; then
-	opendkim-default-keygen
-	echo "Do not remove this file." > /etc/opendkim/keys/.default-generated
+	#opendkim-default-keygen
+    echo "Do not remove this file." > /etc/opendkim/.default-generated
 fi
 
 # Again set the right permissions (needed when mounting from a volume)

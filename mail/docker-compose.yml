@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  mail:
+    image: hub.gassmann.it/docker/mail
+    restart: always
+    volumes:
+     - ./volumes/config:/etc/vmail
+     - ./volumes/mails:/var/vmail
+     - ./volumes/certs:/etc/ssl/mailcerts
+    ports:
+     - "465:465" 
+     - "2225:25"
+     - "587:587"
+     - "143:143"
+     - "993:993"
+     - "110:110"
+     - "995:995"       
+
+

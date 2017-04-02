@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/sbin/smtpd -dv -T lookup -f /etc/smtpd.conf
